@@ -27,7 +27,7 @@ class ProductsCategory(models.Model):
         ordering = ('position', 'name')
 
 
-class Products(models.Model):
+class Product(models.Model):
 
     def get_file_name(self, filename: str) -> str:
         """Create unique name to save image"""

@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                 ('is_special', models.BooleanField(default=True)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
-                ('photo', models.ImageField(upload_to=home.models.Products.get_file_name)),
+                ('photo', models.ImageField(upload_to=home.models.Product.get_file_name)),
                 ('brand', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.productsbrand')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.productscategory')),
             ],
