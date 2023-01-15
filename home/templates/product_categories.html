@@ -1,0 +1,19 @@
+{% load static %}
+        <div class="products-catagories-area clearfix">
+            <div class="amado-pro-catagory clearfix">
+                {% for product in products %}
+                    <!-- Single Catagory -->
+                    <div class="single-products-catagory clearfix">
+                        <a href="home.html">
+                            <img src={{ product.photo.url }} alt="">
+                            <!-- Hover Content -->
+                            <div class="hover-content">
+                                <div class="line"></div>
+                                <p>{{ product.price }}</p>
+                                <h4>{{ product.name }}</h4><br>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
