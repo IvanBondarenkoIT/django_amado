@@ -16,9 +16,11 @@ class ProductsBrand(models.Model):
 
 
 class ProductsCategory(models.Model):
+
     name = models.CharField(max_length=100, db_index=True)
     position = models.PositiveSmallIntegerField(unique=True)
     is_visible = models.BooleanField(default=True)
+    # photo = models.ImageField(upload_to=get_file_name)
 
     def __str__(self):
         return f'{self.name}'
@@ -57,4 +59,7 @@ class Product(models.Model):
         return f'{self.name}: {self.price}$ - {self.brand}'
 
     class Meta:
-        ordering = ('category', 'name')
+        ordering = ('rating', 'category', 'name')
+
+    def grt_absolute_url(self):
+        return reversed("shop:product_datails", srgs=[self.id, self.slug])
