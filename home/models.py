@@ -63,3 +63,6 @@ class Product(models.Model):
 
     def grt_absolute_url(self):
         return reversed("shop:product_datails", srgs=[self.id, self.slug])
+
+    def get_raying_as_range(self):
+        return range(self.rating)

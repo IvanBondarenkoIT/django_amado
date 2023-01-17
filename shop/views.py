@@ -7,4 +7,8 @@ def shop(request):
     brands = ProductsBrand.objects.filter(is_visible=True)
     products = Product.objects.filter(available=True)
 
-    return render(request, 'shop.html', context={'products': products})
+    return render(request, 'shop.html', context={'products': products,
+                                                 'categories': categories,
+                                                 'brands': brands,
+                                                 'range': range(10)
+                                                 })
