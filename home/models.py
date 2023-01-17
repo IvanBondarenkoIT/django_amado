@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 import uuid
 import os
 
@@ -61,8 +62,8 @@ class Product(models.Model):
     class Meta:
         ordering = ('rating', 'category', 'name')
 
-    def grt_absolute_url(self):
-        return reversed("shop:product_datails", srgs=[self.id, self.slug])
+    def get_absolute_url(self):
+        return reverse("product:product_details", args=[self.id, self.slug])
 
     def get_raying_as_range(self):
         return range(self.rating)

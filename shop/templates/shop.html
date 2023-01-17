@@ -73,7 +73,7 @@
                             <div class="product-meta-data">
                                 <div class="line"></div>
                                 <p class="product-price">{{ product.price }}</p>
-                                <a href="\product\">
+                                <a href={{ product.get_absolute_url }}>
                                     <h6>{{ product.name }}</h6>
                                 </a>
                             </div>

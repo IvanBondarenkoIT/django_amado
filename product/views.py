@@ -1,10 +1,12 @@
-from django.shortcuts import render
-from home.models import Product, ProductsCategory, ProductsBrand
+from django.shortcuts import render, get_object_or_404
+from home.models import Product
 
 
-def product(request):
-    categories = ProductsCategory.objects.filter(is_visible=True)
-    brands = ProductsBrand.objects.filter(is_visible=True)
+def product_list(request):
     products = Product.objects.filter(available=True)
-
     return render(request, 'product-details.html', context={'products': products})
+
+
+def product_details(request, id, slug):
+    product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    return render(request, 'product-details.html', context={'product': product})
