@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Product, ProductsCategory, ProductsBrand
 
-TOP_PRODUCTS_ON_HOME_PAGE = 3
+TOP_PRODUCTS_ON_HOME_PAGE = 9
 
 
 # Create your views here.
