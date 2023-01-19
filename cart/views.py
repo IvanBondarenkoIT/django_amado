@@ -1,10 +1,26 @@
-from django.shortcuts import render
-from home.models import Product, ProductsCategory, ProductsBrand
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_GET
+
+from home.models import Product
+from .cart import Cart
 
 
-def cart(request):
-    # categories = ProductsCategory.objects.filter(is_visible=True)
-    # brands = ProductsBrand.objects.filter(is_visible=True)
-    products = Product.objects.filter(available=True)
+# Create your views here.
+@require_GET
+def cart_add(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.add(product=product)
+    return redirect('cart:cart_detail')
 
-    return render(request, 'cart.html', context={'products': products})
+
+def cart_remove(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product)
+    return redirect('cart:cart_detail')
+
+
+def cart_detail(request):
+    cart = Cart(request)
+    return render(request, 'cart_detail.html', {'cart': cart})

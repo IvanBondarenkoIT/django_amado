@@ -84,9 +84,10 @@
 {#            </div>#}
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="/cart/" class="cart-nav"><img src={% static "assets/img/core-img/cart.png" %} alt=""> Cart <span>(0)</span></a>
-                <a href="#" class="fav-nav"><img src={% static "assets/img/core-img/favorites.png" %} alt=""> Favourite</a>
-                <a href="#" class="search-nav"><img src={% static "assets/img/core-img/search.png" %} alt=""> Search</a>
+{#                <a href="{% url "cart:cart_detail" %}">{{ total_items }} item{{ total_items|pluralize }}, ${{ cart.get_total_price }}</a>#}
+                <a href="/cart/" class="cart-nav"><img src={% static "assets/img/core-img/cart.png" %} alt=""> Cart <span>${{ cart.get_total_price }}</span></a>
+{#                <a href="#" class="fav-nav"><img src={% static "assets/img/core-img/favorites.png" %} alt=""> Favourite</a>#}
+{#                <a href="#" class="search-nav"><img src={% static "assets/img/core-img/search.png" %} alt=""> Search</a>#}
             </div>
             <!-- Social Button -->
             <div class="social-info d-flex justify-content-between">

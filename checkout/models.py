@@ -18,7 +18,7 @@ class UserDelivery(models.Model):
     order = models.ForeignKey(cart.models.Order, on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ('-date')
+        ordering = ('-created',)
 
     def __str__(self):
         return f'{self.name} {self.phone}: {self.comment[:20]}'

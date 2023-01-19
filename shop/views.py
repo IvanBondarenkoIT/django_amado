@@ -12,3 +12,5 @@ def shop(request):
                                                  'brands': brands,
                                                  'range': range(10)
                                                  })
+
+    # products = Product.objects.filter(id__in=product_ids)

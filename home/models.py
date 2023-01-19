@@ -60,10 +60,10 @@ class Product(models.Model):
         return f'{self.name}: {self.price}$ - {self.brand}'
 
     class Meta:
-        ordering = ('rating', 'category', 'name')
+        ordering = ('rating', 'category', 'brand', 'name')
 
     def get_absolute_url(self):
         return reverse("product:product_details", args=[self.id, self.slug])
 
-    def get_raying_as_range(self):
+    def get_rating_as_range(self):
         return range(self.rating)
