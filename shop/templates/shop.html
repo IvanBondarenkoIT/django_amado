@@ -10,24 +10,30 @@
             <h6 class="widget-title mb-30">Catagories</h6>
 
             <!--  Catagories  -->
-            <div class="catagories-menu">
-                <ul>
-                    {% for category in categories %}
-                        {% if forloop.first %}
-                            <li class="nav-item">
-                                <a class="nav-link active show" data-bs-toggle="tab"
-                                   href="#tab-{{ category.pk }}">{{ category.name }}</a>
-{#                                <li data-filter=".cat{{ category.pk }}">{{ category.name }}</li>#}
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-{{ category.pk }}">{{ category.name }}</a>
-{#                                <li data-filter=".cat{{ category.pk }}">{{ category.name }}</li>#}
-                            </li>
-                        {% endif %}
+            <div class="row">
 
-                    {% endfor %}
-                </ul>
+                <div class="catagories-menu">
+                    <ul id="menu-flters">
+                        <li data-filter="*" class="filter-activate" data-bs-toggle="tab"
+                            href="#tab-{{ category.pk }}">All
+                        </li>
+                        {% for category in categories %}
+                            {% if forloop.first %}
+                                <li class="nav-item">
+                                    <a class="nav-link active show" data-bs-toggle="tab"
+                                       data-filter=".filter-{{ category.pk }}"
+                                       href="#tab-{{ category.pk }}">{{ category.name }}</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" data-filter=".filter-{{ category.pk }}" data-bs-toggle="tab"
+                                       href="#tab-{{ category.pk }}">{{ category.name }}</a>
+                                </li>
+                            {% endif %}
+
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -54,44 +60,47 @@
     <div class="amado_product_area section-padding-100">
         <div class="container-fluid">
 
-            <div class="row">
+             <div class="row menu-container">
 
                 <!-- Single Product Area -->
                 {% for product in products %}
-                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-                    <div class="single-product-wrapper">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <img src={{ product.photo.url }} alt="">
-                            <!-- Hover Thumb -->
-                            <img class="hover-img" src={{ product.photo.url }} alt="">
-                        </div>
 
-                        <!-- Product Description -->
-                        <div class="product-description d-flex align-items-center justify-content-between">
-                            <!-- Product Meta Data -->
-                            <div class="product-meta-data">
-                                <div class="line"></div>
-                                <p class="product-price">{{ product.price }}</p>
-                                <a href={{ product.get_absolute_url }}>
-                                    <h6>{{ product.name }}</h6>
-                                </a>
+                    <div class="col-12 col-sm-6 col-md-12 col-xl-6 menu-item filter-{{ product.category.pk }}">
+                    <div class="menu-content">
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src={{ product.photo.url }} alt="">
+                                <!-- Hover Thumb -->
+                                <img class="hover-img" src={{ product.photo.url }} alt="">
                             </div>
-                            <!-- Ratings & Cart -->
-                            <div class="ratings-cart text-right">
-                                <div class="ratings">
-                                    {% for star in product.get_rating_as_range %}
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    {% endfor %}
+
+                            <!-- Product Description -->
+                            <div class="product-description d-flex align-items-center justify-content-between">
+                                <!-- Product Meta Data -->
+                                <div class="product-meta-data">
+                                    <div class="line"></div>
+                                    <p class="product-price">{{ product.price }}</p>
+                                    <a href={{ product.get_absolute_url }}>
+                                        <h6>{{ product.name }}</h6>
+                                    </a>
                                 </div>
-                                <div class="cart">
-                                    <a href="/cart/" data-toggle="tooltip" data-placement="left"
-                                       title="Add to Cart"><img src={% static "assets/img/core-img/cart.png"%} alt=""></a>
+                                <!-- Ratings & Cart -->
+                                <div class="ratings-cart text-right">
+                                    <div class="ratings">
+                                        {% for star in product.get_rating_as_range %}
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="cart">
+                                        <a href="/cart/" data-toggle="tooltip" data-placement="left"
+                                           title="Add to Cart"><img src={% static "assets/img/core-img/cart.png"%} alt=""></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    </div>
                 {% endfor %}
 
 
