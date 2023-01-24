@@ -18,7 +18,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from account.views import login_view, logout_view, registration_view
+
+
 urlpatterns = [
+    path('login/', login_view, name='login_view'),
+    path('logout/', logout_view, name='logout_view'),
+    path('registration/', registration_view, name='registration_view'),
+
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
 
