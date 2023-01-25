@@ -18,7 +18,7 @@ class Order(models.Model):
     is_processed = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    order = models.ForeignKey(cart.models.Order, on_delete=models.CASCADE)
+    # order = models.ForeignKey(cart.models.Order, on_delete=models.CASCADE)
     paid = models.BooleanField(default=False)
 
     class Meta:

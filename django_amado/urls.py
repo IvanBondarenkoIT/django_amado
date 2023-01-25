@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 
 from account.views import login_view, logout_view, registration_view
 
+app_name = 'django_amado'
+
 
 urlpatterns = [
     path('login/', login_view, name='login_view'),

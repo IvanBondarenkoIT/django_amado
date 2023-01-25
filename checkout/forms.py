@@ -1,5 +1,6 @@
 from django import forms
 from .models import Order
+from django.core.validators import RegexValidator
 
 
 class OrderCreateForm(forms.ModelForm):
@@ -7,15 +8,13 @@ class OrderCreateForm(forms.ModelForm):
         model = Order
         fields = ['first_name', 'last_name', 'email', 'phone', 'city', 'address', 'comment']
 
-        # first_name = models.CharField(max_length=50)
-        # last_name = models.CharField(max_length=50)
-        # email = models.EmailField(max_length=50, blank=True)
-        # phone = models.CharField(max_length=20, validators=[phone_validator])
-        # city = models.CharField(max_length=50, blank=True)
-        # address = models.CharField(max_length=50, blank=True)
-        # comment = models.CharField(max_length=50, blank=True)
-        # is_processed = models.BooleanField(default=False)
-        # created = models.DateTimeField(auto_now_add=True)
-        # modified = models.DateTimeField(auto_now=True)
-        # order = models.ForeignKey(cart.models.Order, on_delete=models.CASCADE)
-        # paid = models.BooleanField(default=False)
+    phone_validator = RegexValidator(regex=r'^+?3?8?0?\d{2}[- ]?(\d[- ]?){7}$',
+                                     message='Phone number incorrect')
+
+    first_name = forms.CharField(widget=forms.TextInput())
+    last_name = forms.CharField(widget=forms.TextInput())
+    email = forms.EmailField(widget=forms.EmailInput())
+    phone = forms.CharField(widget=forms.TextInput(), validators=[phone_validator])
+    city = forms.CharField(widget=forms.TextInput())
+    address = forms.CharField(widget=forms.TextInput())
+    comment = forms.CharField(widget=forms.TextInput())
