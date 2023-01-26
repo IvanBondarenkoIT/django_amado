@@ -5,7 +5,6 @@ from home.models import Product
 from .cart import Cart
 
 
-# Create your views here.
 @require_GET
 def cart_add(request, product_id):
     cart = Cart(request)

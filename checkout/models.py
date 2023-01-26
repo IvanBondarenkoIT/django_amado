@@ -1,8 +1,5 @@
 from django.db import models
-from django.core.validators import RegexValidator
 from home.models import Product
-
-import cart.models
 
 
 class Order(models.Model):
