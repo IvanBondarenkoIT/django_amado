@@ -14,9 +14,6 @@
 
                 <div class="catagories-menu">
                     <ul id="menu-flters">
-                        <li data-filter="*" class="filter-activate" data-bs-toggle="tab"
-                            href="#tab-{{ category.pk }}">All
-                        </li>
                         {% for category in categories %}
                             {% if forloop.first %}
                                 <li class="nav-item">

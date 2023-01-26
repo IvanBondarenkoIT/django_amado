@@ -11,8 +11,12 @@
                             <div class="cart-title">
                                 <h2>Checkout</h2>
                             </div>
-                            {% csrf_token %}
-                            {{ form.as_p }}
+                            <form method="post" class="order-form">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                {% csrf_token %}
+                                <p><input type="submit" value="Place order" class="btn amado-btn"></p>
+                            </form>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4">
@@ -33,10 +37,7 @@
                             </div>
 
                             <div class="cart-btn mt-100">
-                                <form action="" method="post" class="order-form">
-                                    <p><input type="submit" value="Place order" class="btn amado-btn"></p>
-                                    {% csrf_token %}
-                                </form>
+
                             </div>
                         </div>
                     </div>

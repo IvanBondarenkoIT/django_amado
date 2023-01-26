@@ -15,19 +15,23 @@ class ProductsBrand(models.Model):
     class Meta:
         ordering = ('position', 'name')
 
+    def get_absolute_url(self):
+        return reverse("shop:_filter", args=[self.id, 'ProductsBrand'])
+
 
 class ProductsCategory(models.Model):
-
     name = models.CharField(max_length=100, db_index=True)
     position = models.PositiveSmallIntegerField(unique=True)
     is_visible = models.BooleanField(default=True)
-    # photo = models.ImageField(upload_to=get_file_name)
 
     def __str__(self):
         return f'{self.name}'
 
     class Meta:
         ordering = ('position', 'name')
+
+    def get_absolute_url(self):
+        return reverse("shop:_filter", args=[self.id, 'ProductsCategory'])
 
 
 class Product(models.Model):
