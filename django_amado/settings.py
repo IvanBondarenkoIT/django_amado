@@ -33,7 +33,7 @@ DB_PORT = os.environ.get('DB_PORT')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://amado-e-shop.herokuapp.com/']
+ALLOWED_HOSTS = ['amado-e-shop.herokuapp.com']
 
 
 # Application definition
