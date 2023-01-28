@@ -89,7 +89,7 @@
                                         {% endfor %}
                                     </div>
                                     <div class="cart">
-                                        <a href="/cart/" data-toggle="tooltip" data-placement="left"
+                                        <a href="{{ product.get_absolute_url }}" data-toggle="tooltip" data-placement="left"
                                            title="Add to Cart"><img src={% static "assets/img/core-img/cart.png"%} alt=""></a>
                                     </div>
                                 </div>
